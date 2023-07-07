@@ -1,4 +1,9 @@
 <script>
+import { useGalleryStore } from '@/stores/gallery'
+import { mapStores } from 'pinia'
+
+import DataGallery from '@/components/DataGallery.vue'
+
 import imgDark from '@/assets/images/image-about-dark.jpg'
 import imgLight from '@/assets/images/image-about-light.jpg'
 
@@ -8,16 +13,25 @@ export default {
       imgDark,
       imgLight,
     }
+  },
+  components: {
+    DataGallery,
+  },
+  computed: {
+    ...mapStores(useGalleryStore),
   }
 }
 </script>
 <template>
-  <body class=" flex flex-col items-center font-spartan">
+  <body class=" flex flex-col items-center text-neo-black font-spartan">
     <nav></nav>
     <main class=" w-full max-w-[425px]">
+      <section>
+        <DataGallery :data-index="galleryStore.counter" />
+      </section>
       <section class=" flex flex-col">
         <img :src="imgDark" alt="imgDark">
-        <div class=" flex flex-col gap-4 px-8 pt-12 pb-10">
+        <div class=" relative flex flex-col gap-4 px-8 pt-12 pb-10">
           <h2 class=" text-[14px] leading-[22px] tracking-[5.83px] font-bold uppercase">
             About our furniture</h2>
           <p class=" text-neo-dark-gray text-[16px] leading-[22px] tracking-[-.33px] font-medium">
