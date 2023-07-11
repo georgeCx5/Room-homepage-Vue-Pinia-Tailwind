@@ -53,7 +53,7 @@ export default {
 </script>
 <template>
    <div>
-      <div class=" relative">
+      <div @keydown.left="galleryStore.decrement()" @keydown.right="galleryStore.increment()" class=" relative">
          <img class=" DT:hidden w-full" :src="data[dataIndex].img" :alt="`image ${dataIndex + 1}`" draggable="false">
          <img class=" hidden DT:block w-full" :src="data[dataIndex].imgDT" :alt="`image ${dataIndex + 1}`"
             draggable="false">

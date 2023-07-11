@@ -3,8 +3,11 @@ import { useGalleryStore } from '@/stores/gallery'
 import { mapStores } from 'pinia'
 
 import DataGallery from '@/components/DataGallery.vue'
+import NavBtn from './components/NavBtn.vue'
 
 import logo from '@/assets/images/logo.svg?url'
+import navToOpen from '@/assets/images/icon-hamburger.svg?url'
+import navToClose from '@/assets/images/icon-close.svg?url'
 import imgDark from '@/assets/images/image-about-dark.jpg'
 import imgLight from '@/assets/images/image-about-light.jpg'
 
@@ -12,12 +15,16 @@ export default {
   data() {
     return {
       logo,
+      navToOpen,
+      navToClose,
       imgDark,
       imgLight,
+      isNavOpen: false,
     }
   },
   components: {
     DataGallery,
+    NavBtn,
   },
   computed: {
     ...mapStores(useGalleryStore),
@@ -28,9 +35,24 @@ export default {
   <body class=" relative flex flex-col items-center text-neo-black font-spartan">
     <!-- <button @keydown.left="galleryStore.decrement()" @keydown.right="galleryStore.increment()" class=" absolute w-full h-full focus:outline-none cursor-default">
     </button> -->
-    <nav class=" flex gap-28 w-full max-w-[425px]">
-      <img :src="logo" alt="">
-    </nav>
+    <header class=" relative w-full max-w-[425px]">
+      <nav class=" absolute flex justify-center items-center w-full py-12 select-none z-10">
+        <div class=" absolute left-0 flex items-center px-6">
+          <button @click="isNavOpen = !isNavOpen" class=" fixed focus:outline-none z-20">
+            <img v-show="!isNavOpen" :src="navToOpen" alt="navToOpen">
+            <img class=" z-20" v-show="isNavOpen" :src="navToClose" alt="navToClose">
+          </button>
+        </div>
+        <img :src="logo" alt="logo">
+        <div v-show="isNavOpen"
+          class=" fixed flex flex-row-reverse items-center gap-8 w-full max-w-[425px] h-[110px] px-6 bg-neo-white">
+          <NavBtn btn-text="Home" />
+          <NavBtn btn-text="Shop" />
+          <NavBtn btn-text="About" />
+          <NavBtn btn-text="Contact" />
+        </div>
+      </nav>
+    </header>
     <main class=" w-full max-w-[425px]">
       <section>
         <DataGallery :data-index="galleryStore.counter" />
