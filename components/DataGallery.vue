@@ -54,15 +54,16 @@ export default {
 <template>
    <div>
       <div class=" relative">
-         <img class=" DT:hidden w-full" :src="data[dataIndex].img" :alt="`image ${dataIndex + 1}`">
-         <img class=" hidden DT:block w-full" :src="data[dataIndex].imgDT" :alt="`image ${dataIndex + 1}`">
-         <div class=" absolute bottom-0 right-0 flex justify-center items-center w-[112px] h-[56px]">
+         <img class=" DT:hidden w-full" :src="data[dataIndex].img" :alt="`image ${dataIndex + 1}`" draggable="false">
+         <img class=" hidden DT:block w-full" :src="data[dataIndex].imgDT" :alt="`image ${dataIndex + 1}`"
+            draggable="false">
+         <div class=" absolute bottom-0 right-0 flex justify-center items-center w-[112px] h-[56px] select-none">
             <button @click="galleryStore.decrement()"
-               class=" flex flex-col justify-center items-center h-full w-1/2 bg-neo-black hover:bg-neo-very-dark-gray">
+               class=" flex flex-col justify-center items-center h-full w-1/2 bg-neo-black hover:bg-neo-very-dark-gray focus:outline-none">
                <img class=" h-[18px]" :src="arrowLeft" alt="arrowLeft">
             </button>
             <button @click="galleryStore.increment()"
-               class=" flex flex-col justify-center items-center h-full w-1/2 bg-neo-black hover:bg-neo-very-dark-gray">
+               class=" flex flex-col justify-center items-center h-full w-1/2 bg-neo-black hover:bg-neo-very-dark-gray focus:outline-none">
                <img class=" h-[18px]" :src="arrowRight" alt="arrowRight">
             </button>
          </div>
@@ -76,7 +77,7 @@ export default {
             }}
             </p>
          </div>
-         <button class=" flex items-center gap-8 hover:opacity-50">
+         <button class=" flex items-center gap-8 hover:opacity-50 select-none">
             <span class=" text-[15px] leading-[16px] tracking-[12.5px] font-medium uppercase">
                Shop now</span>
             <img class=" w-10" :src="arrow" alt="arrow">
