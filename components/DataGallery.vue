@@ -52,12 +52,13 @@ export default {
 }
 </script>
 <template>
-   <div>
+   <div class=" flex flex-col DT:flex-row">
       <div @keydown.left="galleryStore.decrement()" @keydown.right="galleryStore.increment()" class=" relative">
          <img class=" DT:hidden w-full" :src="data[dataIndex].img" :alt="`image ${dataIndex + 1}`" draggable="false">
          <img class=" hidden DT:block w-full" :src="data[dataIndex].imgDT" :alt="`image ${dataIndex + 1}`"
             draggable="false">
-         <div class=" absolute bottom-0 right-0 flex justify-center items-center w-[112px] h-[56px] select-none">
+         <div
+            class=" absolute bottom-0 right-0 DT:right-[-160px] flex justify-center items-center w-[112px] DT:w-[160px] h-[56px] DT:h-[80px] select-none">
             <button @click="galleryStore.decrement()"
                class=" flex flex-col justify-center items-center h-full w-1/2 bg-neo-black hover:bg-neo-very-dark-gray focus:outline-none">
                <img class=" h-[18px]" :src="arrowLeft" alt="arrowLeft">
@@ -68,16 +69,17 @@ export default {
             </button>
          </div>
       </div>
-      <div class=" flex flex-col gap-10 px-8 pt-[60px] pb-[72px]">
-         <div class=" flex flex-col gap-4">
-            <h1 class=" text-[40px] leading-[37px] tracking-[-1.67px] font-semibold">
+      <div class=" flex flex-col gap-10 DT:gap-7 DTL:gap-12 DT:w-[41.8%] DTL:w-[50%] px-8 DT:px-[100px] DTL:px-[125px] DT:py-[120px] pt-[60px] pb-[72px]">
+         <div class=" flex flex-col gap-4 DT:gap-5 DTL:gap-6">
+            <h1
+               class=" text-[40px] DT:text-[48px] leading-[37px] DT:leading-[44px] tracking-[-1.67px] DT:tracking-[-2px] font-semibold">
                {{ data[dataIndex].header }}</h1>
             <p class=" text-neo-dark-gray text-[16px] leading-[22px] tracking-[-.33px] font-medium">{{
                data[dataIndex].main
             }}
             </p>
          </div>
-         <button class=" flex items-center gap-8 hover:opacity-50 select-none">
+         <button class=" flex items-center w-fit gap-8 hover:opacity-50 select-none">
             <span class=" text-[15px] leading-[16px] tracking-[12.5px] font-medium uppercase">
                Shop now</span>
             <img class=" w-10" :src="arrow" alt="arrow">
